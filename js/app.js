@@ -82,7 +82,7 @@ async function buscarImagenes() {
 
 //? generador que va a registrar la cantidad de elementos de acuerdo a las paginas
 function* crearPaginador(total) {
-  console.log(total);
+  
   for (let i = 1; i <= total; i++) {
     yield i;
   }
