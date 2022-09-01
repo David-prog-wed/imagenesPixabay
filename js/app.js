@@ -1,6 +1,6 @@
-const resultado = document.querySelector('#resultado');
-const formulario = document.querySelector('#formulario');
-const paginacionDiv = document.querySelector('#paginacion');
+const resultado = document.querySelector("#resultado");
+const formulario = document.querySelector("#formulario");
+const paginacionDiv = document.querySelector("#paginacion");
 
 const registrosPorPagina = 40;
 let totalPaginas;
@@ -8,16 +8,16 @@ let iterador;
 let paginaActual = 1;
 
 window.onload = () => {
-  formulario.addEventListener('submit', validarFormulario);
+  formulario.addEventListener("submit", validarFormulario);
 };
 
 function validarFormulario(e) {
   e.preventDefault();
 
-  const terminoBusqueda = document.querySelector('#termino').value;
+  const terminoBusqueda = document.querySelector("#termino").value;
 
-  if (terminoBusqueda === '') {
-    mostrarAlerta('Agrega un término de búsqueda');
+  if (terminoBusqueda === "") {
+    mostrarAlerta("Agrega un término de búsqueda");
     return;
   }
 
@@ -25,21 +25,21 @@ function validarFormulario(e) {
 }
 
 function mostrarAlerta(mensaje) {
-  const existeAlerta = document.querySelector('.bg-red-100');
+  const existeAlerta = document.querySelector(".bg-red-100");
   if (!existeAlerta) {
-    const alerta = document.createElement('p');
+    const alerta = document.createElement("p");
 
     alerta.classList.add(
-      'bg-red-100',
-      'border-red-400',
-      'text-red-700',
-      'px-4',
-      'py-3',
-      'rounded',
-      'max-w-lg',
-      'mx-auto',
-      'mt-6',
-      'text-center'
+      "bg-red-100",
+      "border-red-400",
+      "text-red-700",
+      "px-4",
+      "py-3",
+      "rounded",
+      "max-w-lg",
+      "mx-auto",
+      "mt-6",
+      "text-center"
     );
 
     alerta.innerHTML = `
@@ -56,9 +56,9 @@ function mostrarAlerta(mensaje) {
 }
 
 async function buscarImagenes() {
-  const termino = document.querySelector('#termino').value;
+  const termino = document.querySelector("#termino").value;
 
-  const key = '1732750-d45b5378879d1e877cd1d35a6';
+  const key = "1732750-d45b5378879d1e877cd1d35a6";
   const url = `https://pixabay.com/api/?key=${key}&q=${termino}&per_page={registrosPorPagina}&page=${paginaActual}`;
 
   // console.log(url);
@@ -82,7 +82,6 @@ async function buscarImagenes() {
 
 //? generador que va a registrar la cantidad de elementos de acuerdo a las paginas
 function* crearPaginador(total) {
-  
   for (let i = 1; i <= total; i++) {
     yield i;
   }
@@ -134,20 +133,20 @@ function imprimirPaginador() {
     if (done) return;
 
     // Caaso contrario, genera un botón por cada elemento del generador
-    const boton = document.createElement('a');
-    boton.href = '#';
+    const boton = document.createElement("a");
+    boton.href = "#";
     boton.dataset.pagina = value;
     boton.textContent = value;
     boton.classList.add(
-      'siguiente',
-      'bg-yellow-400',
-      'px-4',
-      'py-1',
-      'mr-2',
-      'font-bold',
-      'mb-4',
-      'rounded',
-      'hover:bg-yellow-500'
+      "siguiente",
+      "bg-yellow-400",
+      "px-4",
+      "py-1",
+      "mr-2",
+      "font-bold",
+      "mb-4",
+      "rounded",
+      "hover:bg-yellow-500"
     );
 
     boton.onclick = (e) => {
